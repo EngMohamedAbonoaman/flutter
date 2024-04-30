@@ -1,3 +1,21 @@
-# OnBoarding screen UI
+# Flutter Splash Demo
 
-<img src="https://user-images.githubusercontent.com/55477266/151504380-3c1268f6-8d09-490b-be08-68519920a4c3.png" width="23%"></img>
+A Flutter applicaiton to showcase how to make different types of Splash Screens. In this demo we have used Video Player plugin, the plugin name is video_player 0.6.4
+
+# Demo
+<img height="480px" src="https://github.com/Aeologic/flutter_splash_app/blob/master/screens/flutter_splash_demo.gif">
+
+
+
+# Android Screen
+<img height="480px" src="https://github.com/Aeologic/flutter_splash_app/blob/master/screens/Android1.jpg">
+
+
+# iOS Screen
+<img height="480px" src="https://github.com/Aeologic/flutter_splash_app/blob/master/screens/iPhone1.jpg">
+
+
+## Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).

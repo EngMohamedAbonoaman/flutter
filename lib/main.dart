@@ -1,52 +1,27 @@
-import 'dart:io';
+import 'dart:async';
+
+import 'package:AeologicSplashDemo/Constant/Constant.dart';
+import 'package:AeologicSplashDemo/Screen/AnimatedSplashScreen.dart';
+import 'package:AeologicSplashDemo/Screen/HomePage.dart';
+import 'package:AeologicSplashDemo/Screen/ImageSplashScreen.dart';
+import 'package:AeologicSplashDemo/Screen/VideoSplashScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:projects/app_theme.dart';
-import 'package:projects/splash.dart';
-import 'introduction_animation/introduction_animation_screen.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MyApp()));
+Future main() async {
+  runApp(new MaterialApp(
+    title: 'FluterSplashDemo',
+    debugShowCheckedModeBanner: false,
+    theme: new ThemeData(
+      primarySwatch: Colors.red,
+    ),
+    home: new AnimatedSplashScreen(),
+    routes: <String, WidgetBuilder>{
+      HOME_SCREEN: (BuildContext context) => new HomeScreen(),
+      VIDEO_SPALSH: (BuildContext context) => new VideoSplashScreen(),
+      IMAGE_SPLASH: (BuildContext context) => new ImageSplashScreen(),
+      ANIMATED_SPALSH: (BuildContext context) => new AnimatedSplashScreen()
+    },
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness:
-          !kIsWeb && Platform.isAndroid ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarDividerColor: Colors.transparent,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ));
-    return MaterialApp(
-      title: 'Flutter UI',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: AppTheme.textTheme,
-        platform: TargetPlatform.iOS,
-      ),
-      home: SplashScreen(),
-    );
-  }
-}
-
-class HexColor extends Color {
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
-
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF' + hexColor;
-    }
-    return int.parse(hexColor, radix: 16);
-  }
-}
